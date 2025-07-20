@@ -1,0 +1,466 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: IHR测试验证
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.3
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 100
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1747647698237-source-1747647730489-target
+      source: '1747647698237'
+      sourceHandle: source
+      target: '1747647730489'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1747647730489-source-llm-target
+      source: '1747647730489'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1747647730489-source-1747647757370-target
+      source: '1747647730489'
+      sourceHandle: source
+      target: '1747647757370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1747647730489-source-1747647785245-target
+      source: '1747647730489'
+      sourceHandle: source
+      target: '1747647785245'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1747647862092-target
+      source: llm
+      sourceHandle: source
+      target: '1747647862092'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1747647757370-source-1747647862092-target
+      source: '1747647757370'
+      sourceHandle: source
+      target: '1747647862092'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1747647785245-source-1747647862092-target
+      source: '1747647785245'
+      sourceHandle: source
+      target: '1747647862092'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1747647862092-source-1747647924736-target
+      source: '1747647862092'
+      sourceHandle: source
+      target: '1747647924736'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1747647924736-source-answer-target
+      source: '1747647924736'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1747647698237'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1747647730489'
+          - result
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: xfusion-gpt4-32k
+          provider: azure_openai
+        prompt_template:
+        - id: fec6fafc-8873-42f6-b2a3-c0266713f400
+          role: system
+          text: '负责回答出员工输入{{#sys.query#}}的问题。
+
+            这些问题是针对员工个人信息的提出
+
+            你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，
+
+            需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息
+
+            注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案
+
+            分析{{#sys.query#}}，在上下文中找结果，需要根据{{#sys.query#}}中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果
+
+            如果{{#sys.query#}}中出现工号的信息，那需要通过工号找到内容进行处理
+
+            '
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: llm
+      position:
+        x: 693
+        y: 117.10546152511927
+      positionAbsolute:
+        x: 693
+        y: 117.10546152511927
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1747647924736.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 1645.3493456668523
+        y: 282
+      positionAbsolute:
+        x: 1645.3493456668523
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - de394dda-8780-446f-8bd5-c29017de73b8
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: text-embedding-ada-002-CanadaEast
+              embedding_provider_name: azure_openai
+              vector_weight: 1
+        query_variable_selector:
+        - '1747647698237'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 91
+      id: '1747647730489'
+      position:
+        x: 377.8063500406107
+        y: 282
+      positionAbsolute:
+        x: 377.8063500406107
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1747647730489'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4-turbo-NorwayEast
+          provider: azure_openai
+        prompt_template:
+        - id: e68895a4-64d7-4bdc-bd6f-f0cbbac8d6f3
+          role: system
+          text: '负责回答出员工输入{{#sys.query#}}的问题。
+
+            这些问题是针对员工个人信息的提出
+
+            你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，
+
+            需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息
+
+            注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案
+
+            分析{{#sys.query#}}，在上下文中找结果，需要根据{{#sys.query#}}中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果
+
+            如果{{#sys.query#}}中出现工号的信息，那需要通过工号找到内容进行处理
+
+            '
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1747647757370'
+      position:
+        x: 693
+        y: 282
+      positionAbsolute:
+        x: 693
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1747647730489'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-NorthCentralUS
+          provider: azure_openai
+        prompt_template:
+        - id: ecd01cdb-5a85-4863-a955-c0e028697fb1
+          role: system
+          text: '负责回答出员工输入{{#sys.query#}}的问题。
+
+            这些问题是针对员工个人信息的提出
+
+            你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，
+
+            需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息
+
+            注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案
+
+            分析{{#sys.query#}}，在上下文中找结果，需要根据{{#sys.query#}}中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果
+
+            如果{{#sys.query#}}中出现工号的信息，那需要通过工号找到内容进行处理
+
+            '
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1747647785245'
+      position:
+        x: 693
+        y: 418
+      positionAbsolute:
+        x: 693
+        y: 418
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(arg1: str, arg2: str, arg3: str) -> dict:\n    return {\n\
+          \        \"result\": arg1 + arg2+ arg3,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: arg1
+        - value_selector:
+          - '1747647757370'
+          - text
+          variable: arg2
+        - value_selector:
+          - '1747647785245'
+          - text
+          variable: arg3
+      height: 53
+      id: '1747647862092'
+      position:
+        x: 1039
+        y: 282
+      positionAbsolute:
+        x: 1039
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1747647862092'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: xfusion-gpt4-32k
+          provider: azure_openai
+        prompt_template:
+        - id: 49de97f3-2b7d-4eac-9959-711a5d346154
+          role: system
+          text: 通过{{#sys.query#}}将{{#context#}}的内容进行合并输出得到综合答案
+        selected: false
+        title: LLM 4
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1747647924736'
+      position:
+        x: 1346.7966149042927
+        y: 282
+      positionAbsolute:
+        x: 1346.7966149042927
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -99.16607179155926
+      y: 64.9261362771964
+      zoom: 0.4558612442791084
