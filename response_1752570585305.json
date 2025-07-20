@@ -1,0 +1,633 @@
+{
+  "code": 200,
+  "msg": "OK",
+  "data": {
+    "metadata": {
+      "id": "5c3476fb-608c-4093-b963-6e0d8b7dc3ab",
+      "name": "IHR测试验证",
+      "description": "",
+      "mode": "workflow"
+    },
+    "spec": {
+      "graph": {
+        "edges": [
+          {
+            "id": "1747647698237-source-1747647730489-target",
+            "source": "1747647698237",
+            "target": "1747647730489",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "start",
+              "targetType": "knowledge-retrieval"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647730489-source-llm-target",
+            "source": "1747647730489",
+            "target": "llm",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "knowledge-retrieval",
+              "targetType": "llm"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647730489-source-1747647757370-target",
+            "source": "1747647730489",
+            "target": "1747647757370",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "knowledge-retrieval",
+              "targetType": "llm"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647730489-source-1747647785245-target",
+            "source": "1747647730489",
+            "target": "1747647785245",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "knowledge-retrieval",
+              "targetType": "llm"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "llm-source-1747647862092-target",
+            "source": "llm",
+            "target": "1747647862092",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "llm",
+              "targetType": "code"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647757370-source-1747647862092-target",
+            "source": "1747647757370",
+            "target": "1747647862092",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "llm",
+              "targetType": "code"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647785245-source-1747647862092-target",
+            "source": "1747647785245",
+            "target": "1747647862092",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "llm",
+              "targetType": "code"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647862092-source-1747647924736-target",
+            "source": "1747647862092",
+            "target": "1747647924736",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "code",
+              "targetType": "llm"
+            },
+            "zIndex": 0
+          },
+          {
+            "id": "1747647924736-source-answer-target",
+            "source": "1747647924736",
+            "target": "answer",
+            "sourceHandle": "source",
+            "targetHandle": "target",
+            "data": {
+              "isInIteration": false,
+              "sourceType": "llm",
+              "targetType": "answer"
+            },
+            "zIndex": 0
+          }
+        ],
+        "nodes": [
+          {
+            "id": "1747647698237",
+            "type": "start",
+            "title": "开始",
+            "desc": "",
+            "width": 244,
+            "height": 89,
+            "position": {
+              "x": 80,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 80,
+              "y": 282
+            },
+            "selected": true,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": [
+                {
+                  "namespace": "",
+                  "name": "query1",
+                  "label": "query1"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "query1",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                },
+                {
+                  "name": "startNode1_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "startNode1",
+              "startInputs": [
+                {
+                  "label": "query1",
+                  "type": "text-input",
+                  "variable": "query1",
+                  "maxLength": 48,
+                  "options": [],
+                  "required": true
+                }
+              ],
+              "outputKey": "startNode1_output"
+            }
+          },
+          {
+            "id": "llm",
+            "type": "llm",
+            "title": "LLM",
+            "desc": "",
+            "width": 244,
+            "height": 97,
+            "position": {
+              "x": 693,
+              "y": 117.10546
+            },
+            "positionAbsolute": {
+              "x": 693,
+              "y": 117.10546
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": null,
+              "outputs": [
+                {
+                  "name": "LLMNode1_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "LLMNode1",
+              "model": {
+                "mode": "chat",
+                "name": "xfusion-gpt4-32k",
+                "provider": "azure_openai",
+                "completionParams": {
+                  "maxTokens": null
+                }
+              },
+              "promptTemplate": [
+                {
+                  "role": "system",
+                  "text": "负责回答出员工输入{{#LLMNode1.query1#}}的问题。\n这些问题是针对员工个人信息的提出\n你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，\n需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息\n注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案\n分析{{#LLMNode1.query1#}}，在上下文中找结果，需要根据{{#LLMNode1.query1#}}中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果\n如果{{#LLMNode1.query1#}}中出现工号的信息，那需要通过工号找到内容进行处理\n"
+                }
+              ],
+              "memoryConfig": null,
+              "systemPromptTemplate": null,
+              "userPromptTemplate": null,
+              "systemPromptTemplateKey": null,
+              "userPromptTemplateKey": null,
+              "params": null,
+              "paramsKey": null,
+              "messages": null,
+              "messagesKey": null,
+              "advisors": null,
+              "toolCallbacks": null,
+              "outputKey": "LLMNode1_output"
+            }
+          },
+          {
+            "id": "answer",
+            "type": "answer",
+            "title": "直接回复",
+            "desc": "",
+            "width": 244,
+            "height": 101,
+            "position": {
+              "x": 1645.3494,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 1645.3494,
+              "y": 282
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": [
+                {
+                  "namespace": "1747647924736",
+                  "name": "text",
+                  "label": null
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "answer",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "answerNode1",
+              "answer": "{1747647924736.text}",
+              "outputKey": null
+            }
+          },
+          {
+            "id": "1747647730489",
+            "type": "retriever",
+            "title": "知识检索",
+            "desc": "",
+            "width": 244,
+            "height": 91,
+            "position": {
+              "x": 395.86118,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 395.86118,
+              "y": 282
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": [],
+              "outputs": [
+                {
+                  "name": "knowledgeRetrievalNode1_output",
+                  "value": null,
+                  "valueType": "Object[]",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "knowledgeRetrievalNode1",
+              "userPromptKey": null,
+              "userPrompt": null,
+              "topKKey": null,
+              "topK": null,
+              "similarityThresholdKey": null,
+              "similarityThreshold": null,
+              "filterExpressionKey": null,
+              "filterExpression": null,
+              "enableRankerKey": null,
+              "enableRanker": null,
+              "rerankModelKey": null,
+              "rerankModel": null,
+              "rerankOptionsKey": null,
+              "rerankOptions": null,
+              "vectorStoreKey": null,
+              "vectorStore": null,
+              "outputKey": "knowledgeRetrievalNode1_output"
+            }
+          },
+          {
+            "id": "1747647757370",
+            "type": "llm",
+            "title": "LLM 2",
+            "desc": "",
+            "width": 244,
+            "height": 97,
+            "position": {
+              "x": 693,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 693,
+              "y": 282
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": null,
+              "outputs": [
+                {
+                  "name": "LLMNode2_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "LLMNode2",
+              "model": {
+                "mode": "chat",
+                "name": "gpt-4-turbo-NorwayEast",
+                "provider": "azure_openai",
+                "completionParams": {
+                  "maxTokens": null
+                }
+              },
+              "promptTemplate": [
+                {
+                  "role": "system",
+                  "text": "负责回答出员工输入{{#LLMNode2.query1#}}的问题。\n这些问题是针对员工个人信息的提出\n你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，\n需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息\n注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案\n分析{{#LLMNode2.query1#}}，在上下文中找结果，需要根据/中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果\n如果{{#LLMNode2.query1#}}中出现工号的信息，那需要通过工号找到内容进行处理\n"
+                }
+              ],
+              "memoryConfig": null,
+              "systemPromptTemplate": null,
+              "userPromptTemplate": null,
+              "systemPromptTemplateKey": null,
+              "userPromptTemplateKey": null,
+              "params": null,
+              "paramsKey": null,
+              "messages": null,
+              "messagesKey": null,
+              "advisors": null,
+              "toolCallbacks": null,
+              "outputKey": "LLMNode2_output"
+            }
+          },
+          {
+            "id": "1747647785245",
+            "type": "llm",
+            "title": "LLM 3",
+            "desc": "",
+            "width": 244,
+            "height": 97,
+            "position": {
+              "x": 715.6786,
+              "y": 424.2996
+            },
+            "positionAbsolute": {
+              "x": 715.6786,
+              "y": 424.2996
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": null,
+              "outputs": [
+                {
+                  "name": "LLMNode3_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "LLMNode3",
+              "model": {
+                "mode": "chat",
+                "name": "gpt-4o-NorthCentralUS",
+                "provider": "azure_openai",
+                "completionParams": {
+                  "maxTokens": null
+                }
+              },
+              "promptTemplate": [
+                {
+                  "role": "system",
+                  "text": "负责回答出员工输入{{#LLMNode3.query1#}}的问题。\n这些问题是针对员工个人信息的提出\n你需要参考{{#context#}}内容回答问题，只能问什么就回答什么，禁止扩展问题出现，\n需要根据用户的问题去”上下文“中进行匹配字段，然后输出问题，需要理解语意信息\n注意1：因为员工信息知识的答案必须严谨，因此禁止你擅自引入自己的经验知识进行加工。所有问题答案都在“上下文”中，需要给出合理的答案\n分析{{#LLMNode3.query1#}}，在上下文中找结果，需要根据{{#LLMNode3.query1#}}中的主语找到与字段相符的信息，需要全文检索，提供全的答案，有多少结果就输出多少结果\n如果{{#LLMNode3.query1#}}中出现工号的信息，那需要通过工号找到内容进行处理\n"
+                }
+              ],
+              "memoryConfig": null,
+              "systemPromptTemplate": null,
+              "userPromptTemplate": null,
+              "systemPromptTemplateKey": null,
+              "userPromptTemplateKey": null,
+              "params": null,
+              "paramsKey": null,
+              "messages": null,
+              "messagesKey": null,
+              "advisors": null,
+              "toolCallbacks": null,
+              "outputKey": "LLMNode3_output"
+            }
+          },
+          {
+            "id": "1747647862092",
+            "type": "code",
+            "title": "代码执行",
+            "desc": "",
+            "width": 244,
+            "height": 53,
+            "position": {
+              "x": 1039,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 1039,
+              "y": 282
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": [
+                {
+                  "namespace": "llm",
+                  "name": "LLMNode1_output",
+                  "label": "arg1"
+                },
+                {
+                  "namespace": "1747647757370",
+                  "name": "LLMNode2_output",
+                  "label": "arg2"
+                },
+                {
+                  "namespace": "1747647785245",
+                  "name": "LLMNode3_output",
+                  "label": "arg3"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "codeNode1_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "codeNode1",
+              "code": "\ndef main(arg1: str, arg2: str, arg3: str) -> dict:\n    return {\n        \"result\": arg1 + arg2+ arg3,\n    }\n",
+              "codeLanguage": "python3",
+              "outputKey": "codeNode1_output"
+            }
+          },
+          {
+            "id": "1747647924736",
+            "type": "llm",
+            "title": "LLM 4",
+            "desc": "",
+            "width": 244,
+            "height": 97,
+            "position": {
+              "x": 1346.7966,
+              "y": 282
+            },
+            "positionAbsolute": {
+              "x": 1346.7966,
+              "y": 282
+            },
+            "selected": false,
+            "zIndex": 0,
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "data": {
+              "inputs": null,
+              "outputs": [
+                {
+                  "name": "LLMNode4_output",
+                  "value": null,
+                  "valueType": "String",
+                  "description": null,
+                  "extraProperties": null
+                }
+              ],
+              "varName": "LLMNode4",
+              "model": {
+                "mode": "chat",
+                "name": "xfusion-gpt4-32k",
+                "provider": "azure_openai",
+                "completionParams": {
+                  "maxTokens": null
+                }
+              },
+              "promptTemplate": [
+                {
+                  "role": "system",
+                  "text": "通过{{#LLMNode4.query1#}}将{{#context#}}的内容进行合并输出得到综合答案"
+                }
+              ],
+              "memoryConfig": null,
+              "systemPromptTemplate": null,
+              "userPromptTemplate": null,
+              "systemPromptTemplateKey": null,
+              "userPromptTemplateKey": null,
+              "params": null,
+              "paramsKey": null,
+              "messages": null,
+              "messagesKey": null,
+              "advisors": null,
+              "toolCallbacks": null,
+              "outputKey": "LLMNode4_output"
+            }
+          }
+        ]
+      },
+      "workflowVars": [
+        {
+          "name": "knowledgeRetrievalNode1_output",
+          "value": null,
+          "valueType": "Object[]",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "answer",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "LLMNode1_output",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "LLMNode4_output",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "LLMNode3_output",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "LLMNode2_output",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "codeNode1_output",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        },
+        {
+          "name": "query1",
+          "value": null,
+          "valueType": "String",
+          "description": null,
+          "extraProperties": null
+        }
+      ],
+      "envVars": []
+    }
+  },
+  "timestamp": 1752570503109
+}
